@@ -7,8 +7,12 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'windows-2019'
 steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '3.0.0'
 - script: |
     dotnet restore
     dotnet build --configuration Release
